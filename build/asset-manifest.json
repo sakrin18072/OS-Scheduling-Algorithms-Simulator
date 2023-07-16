@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/OS-cbp-vnr/static/css/main.df10becd.css",
+    "main.js": "/OS-cbp-vnr/static/js/main.2e20215e.js",
+    "static/media/venkat.JPG": "/OS-cbp-vnr/static/media/venkat.a8ba05bfffd612b6282c.JPG",
+    "static/media/Yashwanth.JPG": "/OS-cbp-vnr/static/media/Yashwanth.f7e3aea705e201fcc300.JPG",
+    "static/media/Lasya.jpeg": "/OS-cbp-vnr/static/media/Lasya.c698e853ae9260e18f22.jpeg",
+    "static/media/sakrin.jpeg": "/OS-cbp-vnr/static/media/sakrin.b71ad8b47b14b19ccf1f.jpeg",
+    "static/media/Choshik.jpeg": "/OS-cbp-vnr/static/media/Choshik.255368a1d684ad5ab7f5.jpeg",
+    "static/media/Shortest Job First (1).png": "/OS-cbp-vnr/static/media/Shortest Job First (1).f35d541322579dd63682.png",
+    "static/media/Priority.png": "/OS-cbp-vnr/static/media/Priority.8e428c6fdc2f2b0d2424.png",
+    "static/media/FCFS.png": "/OS-cbp-vnr/static/media/FCFS.10b7cd425fab5da0fb74.png",
+    "index.html": "/OS-cbp-vnr/index.html",
+    "main.df10becd.css.map": "/OS-cbp-vnr/static/css/main.df10becd.css.map",
+    "main.2e20215e.js.map": "/OS-cbp-vnr/static/js/main.2e20215e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df10becd.css",
+    "static/js/main.2e20215e.js"
+  ]
+}
