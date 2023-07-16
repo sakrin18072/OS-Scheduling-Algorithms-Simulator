@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sjf" element={<SJF/>} />
-        <Route path="/fcfs" element={<FCFS/>} />
-        <Route path="/priority" element={<Priority/>} />
+        <Route path="/OS-cbp-vnr" element={<Home />} />
+        <Route path="/OS-cbp-vnr/sjf" element={<SJF/>} />
+        <Route path="/OS-cbp-vnr/fcfs" element={<FCFS/>} />
+        <Route path="/OS-cbp-vnr/priority" element={<Priority/>} />
       </Routes>
     </div>
   );

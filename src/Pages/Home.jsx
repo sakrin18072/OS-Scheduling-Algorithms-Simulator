@@ -68,7 +68,7 @@ const Home = () => {
         </h1>
         <div className="flex flex-wrap lg:flex-nowrap lg:flex-row gap-4 pl-6 pr-6 lg:pl-32 lg:pr-32">
           <Link
-            to="/sjf"
+            to="/OS-cbp-vnr/sjf"
             className="flex flex-col bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 hover:scale-105"
           >
             <img
@@ -85,7 +85,7 @@ const Home = () => {
           </Link>
 
           <Link
-            to="/priority"
+            to="/OS-cbp-vnr/priority"
             className="flex flex-col bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 hover:scale-105"
           >
             <img
@@ -101,7 +101,7 @@ const Home = () => {
             </p>
           </Link>
           <Link
-            to="/fcfs"
+            to="/OS-cbp-vnr/fcfs"
             className="flex flex-col bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 hover:scale-105"
           >
             <img
