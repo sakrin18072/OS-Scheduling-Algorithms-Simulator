@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/OS-cbp-vnr/static/css/main.454e4362.css",
-    "main.js": "/OS-cbp-vnr/static/js/main.766f82b5.js",
+    "main.css": "/OS-cbp-vnr/static/css/main.b8d1ffad.css",
+    "main.js": "/OS-cbp-vnr/static/js/main.ff1578ea.js",
     "static/media/Yashwanth.JPG": "/OS-cbp-vnr/static/media/Yashwanth.f7e3aea705e201fcc300.JPG",
     "static/media/venkat.jpeg": "/OS-cbp-vnr/static/media/venkat.9bf3e7debf63ef0de0e4.jpeg",
     "static/media/Lasya.jpeg": "/OS-cbp-vnr/static/media/Lasya.c698e853ae9260e18f22.jpeg",
@@ -11,11 +11,11 @@
     "static/media/Priority.png": "/OS-cbp-vnr/static/media/Priority.8e428c6fdc2f2b0d2424.png",
     "static/media/FCFS.png": "/OS-cbp-vnr/static/media/FCFS.10b7cd425fab5da0fb74.png",
     "index.html": "/OS-cbp-vnr/index.html",
-    "main.454e4362.css.map": "/OS-cbp-vnr/static/css/main.454e4362.css.map",
-    "main.766f82b5.js.map": "/OS-cbp-vnr/static/js/main.766f82b5.js.map"
+    "main.b8d1ffad.css.map": "/OS-cbp-vnr/static/css/main.b8d1ffad.css.map",
+    "main.ff1578ea.js.map": "/OS-cbp-vnr/static/js/main.ff1578ea.js.map"
   },
   "entrypoints": [
-    "static/css/main.454e4362.css",
-    "static/js/main.766f82b5.js"
+    "static/css/main.b8d1ffad.css",
+    "static/js/main.ff1578ea.js"
   ]
 }
