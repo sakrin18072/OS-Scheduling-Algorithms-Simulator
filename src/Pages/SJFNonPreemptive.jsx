@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../Components/Layout";
+import { FiExternalLink } from "react-icons/fi";
 
 const SJFNonPreemptive = () => {
   const [processes, setProcesses] = useState([]);
@@ -107,10 +108,12 @@ const SJFNonPreemptive = () => {
           </ul>
           
         </div>
-        <h1 className="text-2xl text-center mt-8 font-extrabold text-neutral-300">
-        Shortest Job First (SJF) Non-preemptive Algorithm Simulation
+        <h1 className="flex justify-between text-neutral-300">
+          <p className="text-2xl text-center mt-8 font-extrabold mb-3">Shortest Job First (SJF) Non-preemptive Algorithm Simulation</p>
+          <a href="https://github.com/sakrin18072/OS-cbp-vnr/blob/main/src/ExternalCodes/SJFPreemptive.py" rel="noreferrer" target="_blank" className="min-w-fit flex underline">Link for Preemptive SJF scheduling algorithm <FiExternalLink/></a>
         </h1>
-        <div className="min-h-screen">
+        
+        <div className="">
         <form onSubmit={addProcess} className="mb-8 mt-8">
           <div className="mb-4">
             <label htmlFor="id" className="block text-neutral-300">

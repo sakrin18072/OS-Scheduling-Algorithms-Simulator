@@ -39,9 +39,9 @@ const Home = () => {
             </div>
 
             <div class="bg-gray-600 rounded-xl p-6 mt-4 lg:w-[500px] max-w-screen-sm hover:scale-105 transition">
-              <h2 class="text-xl font-bold mb-4">Shortest Job Next (SJN)</h2>
+              <h2 class="text-xl font-bold mb-4">Shortest Job First (SJF)</h2>
               <p class="mb-4">
-                SJN is a non-preemptive scheduling algorithm that executes the
+                SJF is a non-preemptive scheduling algorithm that executes the
                 process with the shortest burst time first. It aims to minimize
                 the average waiting time and provides optimal performance when
                 all process burst times are known in advance. However, it
