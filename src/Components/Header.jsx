@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header class="bg-gray-800 text-white py-6 px-8 sticky top-0 z-50 border-b border-neutral-500">
+    <header class=" text-white py-6 px-8 sticky top-0 z-50 border-b w-screen bg-opacity-0 firefox:bg-opacity-0 backdrop-filter backdrop-blur-3xl ">
       <div class="container mx-auto flex justify-between items-center">
         <Link to={"/OS-cbp-vnr"}>
           <div className="flex align-middle justify-center">

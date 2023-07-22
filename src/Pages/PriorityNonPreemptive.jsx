@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../Components/Layout";
 
-const Priority = () => {
+const PriorityNonPreemptive = () => {
   const [processes, setProcesses] = useState([]);
   const [newProcess, setNewProcess] = useState({
     id: "",
@@ -63,7 +63,7 @@ const Priority = () => {
   return (
     <Layout>
       <div className="container mx-auto mt-8">
-        <div className="bg-gray-100 p-8 rounded-lg shadow-lg">
+        <div className="bg-gray-600 text-neutral-300 p-8 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-4">
             Non-preemptive Priority Scheduling Algorithm
           </h2>
@@ -118,13 +118,13 @@ const Priority = () => {
             </li>
           </ul>
         </div>
-        <h1 className="text-2xl text-center mt-8 font-extrabold">
+        <h1 className="text-2xl text-center mt-8 font-extrabold text-neutral-300">
           Non-preemptive Priority Scheduling Algorithm Simulation
         </h1>
         <div className="min-h-screen">
           <form onSubmit={addProcess} className="mb-8">
             <div className="mb-4">
-              <label htmlFor="id" className="block text-gray-700">
+              <label htmlFor="id" className="block text-neutral-300">
                 Process ID
               </label>
               <input
@@ -133,12 +133,12 @@ const Priority = () => {
                 name="id"
                 value={newProcess.id}
                 onChange={handleInputChange}
-                className="border border-gray-300 rounded px-3 py-2 w-full"
+                className="border border-gray-300 bg-transparent text-neutral-300 rounded px-3 py-2 w-full"
               />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="burstTime" className="block text-gray-700">
+              <label htmlFor="burstTime" className="block text-neutral-300">
                 Burst Time
               </label>
               <input
@@ -147,12 +147,12 @@ const Priority = () => {
                 name="burstTime"
                 value={newProcess.burstTime}
                 onChange={handleInputChange}
-                className="border border-gray-300 rounded px-3 py-2 w-full"
+                className="border border-gray-300 bg-transparent text-neutral-300 rounded px-3 py-2 w-full"
               />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="priority" className="block text-gray-700">
+              <label htmlFor="priority" className="block text-neutral-300">
                 Priority
               </label>
               <input
@@ -161,13 +161,13 @@ const Priority = () => {
                 name="priority"
                 value={newProcess.priority}
                 onChange={handleInputChange}
-                className="border border-gray-300 rounded px-3 py-2 w-full"
+                className="border border-gray-300 bg-transparent text-neutral-300 rounded px-3 py-2 w-full"
               />
             </div>
 
             <button
               type="submit"
-              className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900"
+              className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-900"
             >
               Add Process
             </button>
@@ -185,9 +185,9 @@ const Priority = () => {
           )}
 
           {processes.length > 0 && (
-            <div className="mb-8">
+            <div className="mb-8 text-neutral-300">
               <h2 className="text-lg font-semibold mb-2">Processes:</h2>
-              <table className="table-auto w-full">
+              <table className="table-auto w-full border-0 bg-gray-600">
                 <thead>
                   <tr>
                     <th className="px-4 py-2">Process ID</th>
@@ -198,11 +198,11 @@ const Priority = () => {
                 </thead>
                 <tbody>
                   {processes.map((process, index) => (
-                    <tr key={index} className="odd:bg-gray-100 text-center">
-                      <td className="border px-4 py-2">{process.id}</td>
-                      <td className="border px-4 py-2">{process.burstTime}</td>
-                      <td className="border px-4 py-2">{process.priority}</td>
-                      <td className="border px-4 py-2">
+                    <tr key={index} className="odd:bg-gray-800 text-center">
+                      <td className=" px-4 py-2">{process.id}</td>
+                      <td className=" px-4 py-2">{process.burstTime}</td>
+                      <td className=" px-4 py-2">{process.priority}</td>
+                      <td className=" px-4 py-2">
                         {waitingTimes[index] !== undefined
                           ? waitingTimes[index]
                           : "-"}
@@ -227,4 +227,4 @@ const Priority = () => {
   );
 };
 
-export default Priority;
+export default PriorityNonPreemptive;
