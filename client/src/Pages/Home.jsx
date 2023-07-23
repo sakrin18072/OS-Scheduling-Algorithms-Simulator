@@ -84,7 +84,7 @@ const Home = () => {
 
         <div className="flex flex-wrap lg:flex-nowrap lg:flex-row gap-4 pl-6 pr-6 lg:pl-32 lg:pr-32">
           <Link
-            to="/OS-cbp-vnr/sjf/non-preemptive"
+            to="/OS-cbp-vnr/sjf"
             className="flex flex-col bg-amber-50 hover:bg-amber-100 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 hover:scale-105"
           >
             <img
@@ -101,7 +101,7 @@ const Home = () => {
           </Link>
 
           <Link
-            to="/OS-cbp-vnr/priority/non-preemptive"
+            to="/OS-cbp-vnr/priority"
             className="flex flex-col bg-amber-50 hover:bg-amber-100 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 hover:scale-105"
           >
             <img

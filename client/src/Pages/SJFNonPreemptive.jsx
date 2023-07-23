@@ -106,97 +106,96 @@ const SJFNonPreemptive = () => {
               time is crucial.
             </li>
           </ul>
-          
         </div>
-        <h1 className="flex justify-between text-neutral-300">
-          <p className="text-2xl text-center mt-8 font-extrabold mb-3">Shortest Job First (SJF) Non-preemptive Algorithm Simulation</p>
-          <a href="https://github.com/sakrin18072/OS-cbp-vnr/blob/main/src/ExternalCodes/SJFPreemptive.py" rel="noreferrer" target="_blank" className="min-w-fit flex underline">Link for Preemptive SJF scheduling algorithm <FiExternalLink/></a>
-        </h1>
-        
+
+        <p className="text-2xl text-center mt-8 font-extrabold mb-3 text-neutral-300">
+          Shortest Job First (SJF) Non-preemptive Algorithm Simulation
+        </p>
+
         <div className="">
-        <form onSubmit={addProcess} className="mb-8 mt-8">
-          <div className="mb-4">
-            <label htmlFor="id" className="block text-neutral-300">
-              Process ID
-            </label>
-            <input
-              type="text"
-              id="id"
-              name="id"
-              value={newProcess.id}
-              onChange={handleInputChange}
-              className="border border-gray-300 bg-transparent text-neutral-300 rounded px-3 py-2 w-full"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="burstTime" className="block text-neutral-300">
-              Burst Time
-            </label>
-            <input
-              type="number"
-              id="burstTime"
-              name="burstTime"
-              value={newProcess.burstTime}
-              onChange={handleInputChange}
-              className="border border-gray-300 bg-transparent text-neutral-300 rounded px-3 py-2 w-full"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-900"
-          >
-            Add Process
-          </button>
-        </form>
-
-        {starvationDetected && (
-          <>
-            <p className="text-red-500 font-semibold">Starvation detected!</p>
-            <img
-              src="https://media.tenor.com/y_fxz14VsCwAAAAC/adhurs-brahmanandam.gif"
-              className=" rounded-2xl mb-8"
-              alt=""
-            />
-          </>
-        )}
-
-        {processes.length > 0 && (
-          <div className="mb-8 text-neutral-300">
-            <h2 className="text-lg font-semibold mb-2">Processes:</h2>
-            <table className="table-auto w-full border-0 bg-gray-600">
-              <thead>
-                <tr>
-                  <th className="px-4 py-2">Process ID</th>
-                  <th className="px-4 py-2">Burst Time</th>
-                  <th className="px-4 py-2">Waiting Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {processes.map((process, index) => (
-                  <tr key={index} className="odd:bg-gray-800  text-center">
-                    <td className=" px-4 py-2">{process.id}</td>
-                    <td className=" px-4 py-2">{process.burstTime}</td>
-                    <td className=" px-4 py-2">
-                      {waitingTimes[index] !== undefined
-                        ? waitingTimes[index]
-                        : "-"}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="mt-4">
-              <p className="font-semibold">
-                Average Waiting Time: {averageWaitingTime.toFixed(2)}
-              </p>
-              <p className="font-semibold">
-                Average Turnaround Time: {averageTurnaroundTime.toFixed(2)}
-              </p>
+          <form onSubmit={addProcess} className="mb-8 mt-8">
+            <div className="mb-4">
+              <label htmlFor="id" className="block text-neutral-300">
+                Process ID
+              </label>
+              <input
+                type="text"
+                id="id"
+                name="id"
+                value={newProcess.id}
+                onChange={handleInputChange}
+                className="border border-gray-300 bg-transparent text-neutral-300 rounded px-3 py-2 w-full"
+              />
             </div>
-          </div>
-        )}
+
+            <div className="mb-4">
+              <label htmlFor="burstTime" className="block text-neutral-300">
+                Burst Time
+              </label>
+              <input
+                type="number"
+                id="burstTime"
+                name="burstTime"
+                value={newProcess.burstTime}
+                onChange={handleInputChange}
+                className="border border-gray-300 bg-transparent text-neutral-300 rounded px-3 py-2 w-full"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-900"
+            >
+              Add Process
+            </button>
+          </form>
+
+          {starvationDetected && (
+            <>
+              <p className="text-red-500 font-semibold">Starvation detected!</p>
+              <img
+                src="https://media.tenor.com/y_fxz14VsCwAAAAC/adhurs-brahmanandam.gif"
+                className=" rounded-2xl mb-8"
+                alt=""
+              />
+            </>
+          )}
+
+          {processes.length > 0 && (
+            <div className="mb-8 text-neutral-300">
+              <h2 className="text-lg font-semibold mb-2">Processes:</h2>
+              <table className="table-auto w-full border-0 bg-gray-600">
+                <thead>
+                  <tr>
+                    <th className="px-4 py-2">Process ID</th>
+                    <th className="px-4 py-2">Burst Time</th>
+                    <th className="px-4 py-2">Waiting Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {processes.map((process, index) => (
+                    <tr key={index} className="odd:bg-gray-800  text-center">
+                      <td className=" px-4 py-2">{process.id}</td>
+                      <td className=" px-4 py-2">{process.burstTime}</td>
+                      <td className=" px-4 py-2">
+                        {waitingTimes[index] !== undefined
+                          ? waitingTimes[index]
+                          : "-"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="mt-4">
+                <p className="font-semibold">
+                  Average Waiting Time: {averageWaitingTime.toFixed(2)}
+                </p>
+                <p className="font-semibold">
+                  Average Turnaround Time: {averageTurnaroundTime.toFixed(2)}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </Layout>
