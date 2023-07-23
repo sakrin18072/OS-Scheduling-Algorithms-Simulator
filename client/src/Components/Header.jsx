@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header class=" text-white py-6 px-8 sticky top-0 z-50 border-b w-screen bg-opacity-0 firefox:bg-opacity-0 backdrop-filter backdrop-blur-3xl ">
       <div class="container mx-auto flex justify-between items-center">
-        <Link to={"/OS-cbp-vnr"}>
+        <Link to={"/"}>
           <div className="flex align-middle justify-center">
           <img
             src="https://upload.wikimedia.org/wikipedia/en/4/47/VNRVJIETLogo.png"
