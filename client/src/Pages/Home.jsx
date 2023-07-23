@@ -84,7 +84,7 @@ const Home = () => {
 
         <div className="flex flex-wrap lg:flex-nowrap lg:flex-row gap-4 pl-6 pr-6 lg:pl-32 lg:pr-32">
           <Link
-            to="/OS-cbp-vnr/sjf"
+            to="/sjf"
             className="flex flex-col bg-amber-50 hover:bg-amber-100 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 hover:scale-105"
           >
             <img
@@ -101,7 +101,7 @@ const Home = () => {
           </Link>
 
           <Link
-            to="/OS-cbp-vnr/priority"
+            to="/priority"
             className="flex flex-col bg-amber-50 hover:bg-amber-100 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 hover:scale-105"
           >
             <img
@@ -117,7 +117,7 @@ const Home = () => {
             </p>
           </Link>
           <Link
-            to="/OS-cbp-vnr/fcfs"
+            to="/fcfs"
             className="flex flex-col bg-amber-50 hover:bg-amber-100 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 hover:scale-105"
           >
             <img

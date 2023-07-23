@@ -1,6 +1,5 @@
 {
   "name": "os-cbp-vnr",
-  "homepage": "https://sakrin18072.github.io/OS-cbp-vnr",
   "version": "0.1.0",
   "proxy": "http://localhost:8080",
   "private": true,

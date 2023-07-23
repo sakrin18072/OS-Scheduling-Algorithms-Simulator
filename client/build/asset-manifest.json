@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/OS-cbp-vnr/static/css/main.d34993b2.css",
-    "main.js": "/OS-cbp-vnr/static/js/main.0603b21e.js",
-    "static/media/Yashwanth.JPG": "/OS-cbp-vnr/static/media/Yashwanth.f7e3aea705e201fcc300.JPG",
-    "static/media/venkat.jpeg": "/OS-cbp-vnr/static/media/venkat.9bf3e7debf63ef0de0e4.jpeg",
-    "static/media/Lasya.jpeg": "/OS-cbp-vnr/static/media/Lasya.c698e853ae9260e18f22.jpeg",
-    "static/media/sakrin.jpeg": "/OS-cbp-vnr/static/media/sakrin.b71ad8b47b14b19ccf1f.jpeg",
-    "static/media/Choshik.jpeg": "/OS-cbp-vnr/static/media/Choshik.255368a1d684ad5ab7f5.jpeg",
-    "static/media/SJF Non-Preemptiv.png": "/OS-cbp-vnr/static/media/SJF Non-Preemptiv.4c5481a96660ae085f8d.png",
-    "static/media/Shortest Job First (1).png": "/OS-cbp-vnr/static/media/Shortest Job First (1).f35d541322579dd63682.png",
-    "static/media/SJF Preemptive.png": "/OS-cbp-vnr/static/media/SJF Preemptive.3e62cb14bfda82ae5d0a.png",
-    "static/media/Priority Non Preemptive.png": "/OS-cbp-vnr/static/media/Priority Non Preemptive.e0f595547512aa2dfc7d.png",
-    "static/media/Priority.png": "/OS-cbp-vnr/static/media/Priority.8e428c6fdc2f2b0d2424.png",
-    "static/media/Priority Preemptive.png": "/OS-cbp-vnr/static/media/Priority Preemptive.1286d07187171c3e4b9b.png",
-    "static/media/FCFS.png": "/OS-cbp-vnr/static/media/FCFS.10b7cd425fab5da0fb74.png",
-    "index.html": "/OS-cbp-vnr/index.html",
-    "main.d34993b2.css.map": "/OS-cbp-vnr/static/css/main.d34993b2.css.map",
-    "main.0603b21e.js.map": "/OS-cbp-vnr/static/js/main.0603b21e.js.map"
+    "main.css": "/static/css/main.d34993b2.css",
+    "main.js": "/static/js/main.1b915162.js",
+    "static/media/Yashwanth.JPG": "/static/media/Yashwanth.f7e3aea705e201fcc300.JPG",
+    "static/media/venkat.jpeg": "/static/media/venkat.9bf3e7debf63ef0de0e4.jpeg",
+    "static/media/Lasya.jpeg": "/static/media/Lasya.c698e853ae9260e18f22.jpeg",
+    "static/media/sakrin.jpeg": "/static/media/sakrin.b71ad8b47b14b19ccf1f.jpeg",
+    "static/media/Choshik.jpeg": "/static/media/Choshik.255368a1d684ad5ab7f5.jpeg",
+    "static/media/SJF Non-Preemptiv.png": "/static/media/SJF Non-Preemptiv.4c5481a96660ae085f8d.png",
+    "static/media/Shortest Job First (1).png": "/static/media/Shortest Job First (1).f35d541322579dd63682.png",
+    "static/media/SJF Preemptive.png": "/static/media/SJF Preemptive.3e62cb14bfda82ae5d0a.png",
+    "static/media/Priority Non Preemptive.png": "/static/media/Priority Non Preemptive.e0f595547512aa2dfc7d.png",
+    "static/media/Priority.png": "/static/media/Priority.8e428c6fdc2f2b0d2424.png",
+    "static/media/Priority Preemptive.png": "/static/media/Priority Preemptive.1286d07187171c3e4b9b.png",
+    "static/media/FCFS.png": "/static/media/FCFS.10b7cd425fab5da0fb74.png",
+    "index.html": "/index.html",
+    "main.d34993b2.css.map": "/static/css/main.d34993b2.css.map",
+    "main.1b915162.js.map": "/static/js/main.1b915162.js.map"
   },
   "entrypoints": [
     "static/css/main.d34993b2.css",
-    "static/js/main.0603b21e.js"
+    "static/js/main.1b915162.js"
   ]
 }

@@ -8,7 +8,7 @@ const Priority = () => {
       <div className="lg:pl-64 lg:pr-64 lg:pt-28 bg-gray-900 m-auto lg:py-8 min-h-screen ">
         <div className="flex flex-wrap lg:flex-nowrap lg:flex-row gap-4 pl-6 pr-6 lg:pl-32 lg:pr-32">
         <Link
-            to="/OS-cbp-vnr/priority/preemptive"
+            to="/priority/preemptive"
             className="flex flex-col bg-amber-50 hover:bg-amber-100 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 hover:scale-105 lg:mr-10"
           >
             <img
@@ -24,7 +24,7 @@ const Priority = () => {
             </p>
           </Link>
         <Link
-            to="/OS-cbp-vnr/priority/non-preemptive"
+            to="/priority/non-preemptive"
             className="flex flex-col bg-amber-50 hover:bg-amber-100 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300 hover:scale-105 lg:ml-10"
           >
             <img
