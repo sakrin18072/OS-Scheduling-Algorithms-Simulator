@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../Components/Layout";
 import { Link } from "react-router-dom";
-import {FiExternalLink} from 'react-icons/fi'
+import { FiExternalLink } from "react-icons/fi";
 
 const PriorityNonPreemptive = () => {
   const [processes, setProcesses] = useState([]);
@@ -120,10 +120,10 @@ const PriorityNonPreemptive = () => {
             </li>
           </ul>
         </div>
-        <h1 className="flex justify-between text-neutral-300">
-          <p className="text-2xl text-center mt-8 font-extrabold mb-3">Non-preemptive Priority Scheduling Algorithm Simulation</p>
-          <a href="https://github.com/sakrin18072/OS-cbp-vnr/blob/main/src/ExternalCodes/PriorityPreemptive.py" rel="noreferrer" target="_blank" className="min-w-fit flex underline">Link for Preemptive priority scheduling algorithm <FiExternalLink/></a>
-        </h1>
+        <p className="text-2xl text-center mt-8 font-extrabold mb-3 text-neutral-300">
+          Non-preemptive Priority Scheduling Algorithm Simulation
+        </p>
+
         <div className="">
           <form onSubmit={addProcess} className="mb-8">
             <div className="mb-4">
