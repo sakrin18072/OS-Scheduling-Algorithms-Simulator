@@ -43,7 +43,7 @@ class PreemptiveSJFScheduling {
         currentProcess.turnaroundTime =
           currentProcess.completionTime - currentProcess.arrivalTime;
         currentProcess.waitingTime =
-          currentProcess.turnaroundTime - currentProcess.burstTime;
+          currentProcess.turnaroundTime - currentProcess.initialBurstTime;
         this.completedProcesses.push(currentProcess);
       }
 
@@ -78,7 +78,6 @@ export const preemptiveSJFSimulator = (req, res) => {
     }
     const scheduler = new PreemptiveSJFScheduling(processes);
     scheduler.execute();
-    scheduler.completedProcesses.forEach(process=>process.waitingTime = process.waitingTime - process.initialBurstTime);
     const completedProcesses = scheduler.completedProcesses;
 
     const averageWaitingTime = scheduler
