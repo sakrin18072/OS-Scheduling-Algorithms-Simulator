@@ -5,7 +5,7 @@ import Layout from "../Components/Layout";
 const Home = () => {
   return (
     <Layout>
-      <div className="min-h-screen bg-gray-800">
+      <div className="min-h-screen bg-gray-800 max-w-full">
         <div className=" flex lg:flex-nowrap flex-wrap-reverse h-screen justify-center align-middle p-10">
           <div className="min-w-fit m-auto hidden md:flex md:flex-col lg:pr-7">
             <p className=" text-9xl font-extrabold text-white">Get a</p>
@@ -77,7 +77,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="lg:pl-24 lg:pr-24 bg-gray-900 m-auto lg:py-8 min-h-screen ">
+      <div className="lg:pl-24 lg:pr-24 bg-gray-900 m-auto lg:py-8 min-h-screen max-w-full">
         <h1 className="text-3xl font-extrabold mb-8 text-center pt-8 text-white">
           SIMULATIONS
         </h1>
@@ -135,7 +135,7 @@ const Home = () => {
         </div>
       </div>
       
-      <div className="min-h-screen bg-gray-800 mx-auto flex flex-col pt-24">
+      <div className="min-h-screen bg-gray-800 mx-auto flex flex-col pt-24 max-w-full">
         <div className="lg:pl-12 lg:pr-12 p-8 rounded-2xl lg:flex-row flex flex-col-reverse lg:m-auto align-middle gap-8 bg-gray-600 m-4">
           <div className="text-center">
             <p className=" text-xl font-extrabold text-white lg:pt-28 ">

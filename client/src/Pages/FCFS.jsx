@@ -130,7 +130,7 @@ const FCFS = () => {
         <h1 className="text-2xl text-center mt-8 font-extrabold text-neutral-300">
           First-Come, First-Served (FCFS) Scheduling Algorithm Simulation
         </h1>
-        <div className="">
+        <div className="container">
           <form onSubmit={handleSubmit} className="mb-8">
             <div className="mb-4">
               <label htmlFor="id" className="block text-neutral-300">

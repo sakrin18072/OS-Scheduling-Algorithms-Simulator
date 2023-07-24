@@ -6,7 +6,7 @@ const Layout = ({children}) => {
   return (
     <div className='bg-gray-800'>
         <Header/>
-        <main className=' min-h-screen w-screen'>
+        <main className='no-scrollbar min-h-screen w-full'>
         {children}
         </main>
         <Footer/>
