@@ -28,6 +28,7 @@ const SJFPreemptive = () => {
       burstTime: parseInt(burstTime),
       priority: parseInt(priority),
       arrivalTime: parseInt(arrivalTime),
+      initialBurstTime: parseInt(burstTime)
     };
     const newProcesses = [...processes, process];
     setProcesses(newProcesses);
@@ -151,19 +152,6 @@ const SJFPreemptive = () => {
               />
             </div>
 
-            <div className="mb-4">
-              <label htmlFor="priority" className="block text-neutral-300">
-                Priority
-              </label>
-              <input
-                type="number"
-                id="priority"
-                name="priority"
-                value={newProcess.priority}
-                onChange={handleInputChange}
-                className="border border-gray-300 bg-transparent text-neutral-300 rounded px-3 py-2 w-full"
-              />
-            </div>
 
             <button
               type="submit"
@@ -182,7 +170,6 @@ const SJFPreemptive = () => {
                     <th className="px-4 py-2">Process ID</th>
                     <th className="px-4 py-2">Burst Time</th>
                     <th className="px-4 py-2">Arrival Time</th>
-                    <th className="px-4 py-2">Priority</th>
                     <th className="px-4 py-2">Waiting Time</th>
                     <th className="px-4 py-2">Completion Time</th>
                   </tr>
@@ -191,9 +178,8 @@ const SJFPreemptive = () => {
                   {result.map((process, index) => (
                     <tr key={index} className="odd:bg-gray-800 text-center">
                       <td className=" px-4 py-2">{process.id}</td>
-                      <td className=" px-4 py-2">{process.burstTime}</td>
+                      <td className=" px-4 py-2">{process.initialBurstTime}</td>
                       <td className=" px-4 py-2">{process.arrivalTime}</td>
-                      <td className=" px-4 py-2">{process.priority}</td>
                       <td className=" px-4 py-2">{process.waitingTime}</td>
                       <td className=" px-4 py-2">{process.completionTime}</td>
                     </tr>

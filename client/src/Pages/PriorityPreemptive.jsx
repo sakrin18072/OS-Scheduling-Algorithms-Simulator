@@ -28,6 +28,7 @@ const PriorityPreemptive = () => {
       burstTime: parseInt(burstTime),
       priority: parseInt(priority),
       arrivalTime: parseInt(arrivalTime),
+      initialBurstTime: parseInt(burstTime)
     };
     const newProcesses = [...processes, process];
     setProcesses(newProcesses);
@@ -193,7 +194,7 @@ const PriorityPreemptive = () => {
                   {result.map((process, index) => (
                     <tr key={index} className="odd:bg-gray-800 text-center">
                       <td className=" px-4 py-2">{process.id}</td>
-                      <td className=" px-4 py-2">{process.burstTime}</td>
+                      <td className=" px-4 py-2">{process.initialBurstTime}</td>
                       <td className=" px-4 py-2">{process.arrivalTime}</td>
                       <td className=" px-4 py-2">{process.priority}</td>
                       <td className=" px-4 py-2">{process.waitingTime}</td>

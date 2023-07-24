@@ -1,13 +1,13 @@
 class Process {
-  constructor(id, arrivalTime, burstTime, priority) {
+  constructor(id, arrivalTime, burstTime) {
     this.id = id;
     this.arrivalTime = arrivalTime;
     this.burstTime = burstTime;
-    this.priority = priority;
     this.startTime = 0;
     this.completionTime = 0;
     this.waitingTime = 0;
     this.turnaroundTime = 0;
+    this.initialBurstTime = burstTime;
   }
 }
 
@@ -74,7 +74,7 @@ export const preemptiveSJFSimulator = (req, res) => {
     const processes = [];
 
     for (let i of processesFromReq) {
-      processes.push(new Process(i.id, i.arrivalTime, i.burstTime, i.priority));
+      processes.push(new Process(i.id, i.arrivalTime, i.burstTime ));
     }
     const scheduler = new PreemptiveSJFScheduling(processes);
     scheduler.execute();

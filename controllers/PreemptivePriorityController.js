@@ -8,6 +8,7 @@ class Process {
     this.completionTime = 0;
     this.waitingTime = 0;
     this.turnaroundTime = 0;
+    this.initialBurstTime = burstTime;
   }
 }
 
