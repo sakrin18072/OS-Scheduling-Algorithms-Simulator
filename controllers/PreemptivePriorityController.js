@@ -89,6 +89,7 @@ export const PreemptivePrioritySimulator = (req, res) => {
     }
     const scheduler = new PreemptivePriorityScheduling(processes);
     scheduler.execute();
+    scheduler.completedProcesses.forEach(process=>process.waitingTime = process.waitingTime - process.initialBurstTime);
     const completedProcesses = scheduler.completedProcesses;
 
     const averageWaitingTime = scheduler

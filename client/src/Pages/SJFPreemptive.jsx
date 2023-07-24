@@ -180,7 +180,7 @@ const SJFPreemptive = () => {
                       <td className=" px-4 py-2">{process.id}</td>
                       <td className=" px-4 py-2">{process.initialBurstTime}</td>
                       <td className=" px-4 py-2">{process.arrivalTime}</td>
-                      <td className=" px-4 py-2">{process.waitingTime - process.initialBurstTime}</td>
+                      <td className=" px-4 py-2">{process.waitingTime}</td>
                       <td className=" px-4 py-2">{process.completionTime}</td>
                     </tr>
                   ))}
