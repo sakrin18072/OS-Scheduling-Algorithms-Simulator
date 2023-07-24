@@ -7,9 +7,9 @@ const Home = () => {
     <Layout>
       <div className="min-h-screen bg-gray-800 max-w-full">
         <div className=" flex lg:flex-nowrap flex-wrap-reverse h-screen justify-center align-middle p-10">
-          <div className="min-w-fit m-auto hidden md:flex md:flex-col lg:pr-7">
+          <div className="min-w-fit my-auto md:flex md:flex-col lg:pr-7">
             <p className=" text-9xl font-extrabold text-white">Get a</p>
-            <p className=" text-9xl font-extrabold text-white"> grasp 🥳</p>
+            <p className=" text-9xl font-extrabold text-white"> grasp</p>
           </div>
           <div className=" h-96  w-full rounded-2xl">
             <iframe
@@ -150,7 +150,7 @@ const Home = () => {
             <img
               src="https://media.licdn.com/dms/image/C4D03AQHzdPS39jrEGw/profile-displayphoto-shrink_400_400/0/1668067148773?e=1695254400&v=beta&t=W0jpLLkPbUEH1MZ3DCyiDt1d7KunzC4O96YRO8xuhLU"
               alt=""
-              className=" rounded-full w-[300px]"
+              className="m-auto rounded-full w-[300px]"
             />
           </div>
         </div>
@@ -158,7 +158,7 @@ const Home = () => {
         <h1 className="text-4xl font-extrabold text-gray-200 text-center pt-16">
           Team KanyaRashi
         </h1>
-        <div className="pl-24 pr-24 m-auto flex flex-wrap lg:flex-nowrap pt-8 gap-8 mb-24">
+        <div className=" m-auto flex flex-wrap lg:flex-nowrap pt-8 gap-8 mb-24 justify-center">
           <div className="flex flex-col justify-center bg-gray-600 p-4 rounded-xl transition hover:scale-110 hover:bg-gray-900">
             <img
               src={require("../assets/Lasya.jpeg")}
