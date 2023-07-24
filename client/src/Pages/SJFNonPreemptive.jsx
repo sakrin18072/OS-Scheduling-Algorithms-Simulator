@@ -61,7 +61,7 @@ const SJFNonPreemptive = () => {
   return (
     <Layout>
       <div className="container mx-auto mt-8">
-        <div className="bg-gray-600 text-neutral-300 p-8 rounded-lg shadow-lg">
+        <div className="bg-gray-600 text-neutral-300 p-8 rounded-lg shadow-lg max-w-full">
           <h2 className="text-2xl font-bold mb-4">
             Shortest Job First (SJF) Non-preemptive Algorithm
           </h2>
@@ -112,7 +112,7 @@ const SJFNonPreemptive = () => {
           Shortest Job First (SJF) Non-preemptive Algorithm Simulation
         </p>
 
-        <div className="">
+        <div className="container">
           <form onSubmit={addProcess} className="mb-8 mt-8">
             <div className="mb-4">
               <label htmlFor="id" className="block text-neutral-300">
