@@ -19,11 +19,16 @@ const FCFS = () => {
     e.preventDefault();
     if (newProcess.burstTime === "" || !newProcess.id) {
       window.alert("Please enter valid data");
-    } else setProcesses([...processes, newProcess]);
+    } else {
+      
+        setProcesses([...processes, newProcess]);
+      
+    }
     setNewProcess({
       id: "",
       burstTime: "",
     });
+
   };
 
   const calculateConvoyEffect = () => {
@@ -201,7 +206,7 @@ const FCFS = () => {
             </div>
           )}
           {processes.length > 0 && (
-            <div className="flex justify-between">
+            <div className="flex justify-between text-neutral-300">
               <div>
                 <p className="font-semibold">
                   Average Turnaround Time: {averageTurnaroundTime}

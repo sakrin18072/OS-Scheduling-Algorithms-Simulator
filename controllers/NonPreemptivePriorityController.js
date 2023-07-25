@@ -1,17 +1,16 @@
 class Process {
-    constructor(id, arrivalTime, burstTime, priority) {
-      this.id = id;
-      this.arrivalTime = arrivalTime;
-      this.burstTime = burstTime;
-      this.priority = priority;
-      this.startTime = 0;
-      this.completionTime = 0;
-      this.waitingTime = 0;
-      this.turnaroundTime = 0;
-      this.initialBurstTime = burstTime;
-    }
+  constructor(id, arrivalTime, burstTime, priority) {
+    this.id = id;
+    this.arrivalTime = arrivalTime;
+    this.burstTime = burstTime;
+    this.priority = priority;
+    this.startTime = 0;
+    this.completionTime = 0;
+    this.waitingTime = 0;
+    this.turnaroundTime = 0;
+    this.initialBurstTime = burstTime;
   }
-
+}
 
 class NonPreemptivePriorityScheduling {
   constructor(processes) {
@@ -21,10 +20,8 @@ class NonPreemptivePriorityScheduling {
   }
 
   execute() {
-    const processesCopy = JSON.parse(JSON.stringify(this.processes));
-
-    // Sort processes by priority and arrival time (if same priority)
-    processesCopy.sort((a, b) => {
+    // Sort the processes based on priority and arrival time
+    this.processes.sort((a, b) => {
       if (a.priority === b.priority) {
         return a.arrivalTime - b.arrivalTime;
       } else {
@@ -32,32 +29,27 @@ class NonPreemptivePriorityScheduling {
       }
     });
 
-    let currentTime = processesCopy[0].arrivalTime;
+    let currentTime = 0; // Initialize the current time
 
-    while (processesCopy.length > 0) {
-      const eligibleProcesses = processesCopy.filter(
-        (process) => process.arrivalTime <= currentTime
-      );
-
-      if (eligibleProcesses.length === 0) {
-        currentTime++;
-        continue;
+    for (const currentProcess of this.processes) {
+      // If the process hasn't arrived yet, wait until it arrives
+      if (currentTime < currentProcess.arrivalTime) {
+        currentTime = currentProcess.arrivalTime;
       }
 
-      const currentProcess = eligibleProcesses[0];
-
+      // Set the start time and completion time for the current process
       currentProcess.startTime = currentTime;
-      currentProcess.completionTime = currentTime + currentProcess.burstTime;
+      currentProcess.completionTime = currentTime + currentProcess.burstTime; // Use burstTime here
       currentProcess.turnaroundTime =
         currentProcess.completionTime - currentProcess.arrivalTime;
       currentProcess.waitingTime =
-        currentProcess.turnaroundTime - currentProcess.burstTime;
+        currentProcess.turnaroundTime - currentProcess.initialBurstTime;
 
-      this.completedProcesses.push(currentProcess);
-
-      processesCopy.splice(processesCopy.indexOf(currentProcess), 1);
-
+      // Move the current time to the completion time of the current process
       currentTime = currentProcess.completionTime;
+
+      // Add the completed process to the list
+      this.completedProcesses.push(currentProcess);
     }
   }
 
@@ -79,34 +71,33 @@ class NonPreemptivePriorityScheduling {
 }
 
 export const NonPreemptivePrioritySimulator = (req, res) => {
-    try {
-      const { processesFromReq } = req.body;
-      const processes = [];
-  
-      for (let i of processesFromReq) {
-        processes.push(new Process(i.id, i.arrivalTime, i.burstTime, i.priority));
-      }
-      const scheduler = new NonPreemptivePriorityScheduling(processes);
-      scheduler.execute();
-      const completedProcesses = scheduler.completedProcesses;
-  
-      const averageWaitingTime = scheduler
-        .calculateAverageWaitingTime()
-        .toFixed(2);
-      const averageTurnaroundTime = scheduler
-        .calculateAverageTurnaroundTime()
-        .toFixed(2);
-      res.send({
-        success: true,
-        completedProcesses,
-        averageTurnaroundTime,
-        averageWaitingTime,
-      });
-    } catch (error) {
-      res.send({
-        success: false,
-        message: error.message,
-      });
+  try {
+    const { processesFromReq } = req.body;
+    const processes = [];
+
+    for (let i of processesFromReq) {
+      processes.push(new Process(i.id, i.arrivalTime, i.burstTime, i.priority));
     }
-  };
-  
+    const scheduler = new NonPreemptivePriorityScheduling(processes);
+    scheduler.execute();
+    const completedProcesses = scheduler.completedProcesses;
+
+    const averageWaitingTime = scheduler
+      .calculateAverageWaitingTime()
+      .toFixed(2);
+    const averageTurnaroundTime = scheduler
+      .calculateAverageTurnaroundTime()
+      .toFixed(2);
+    res.send({
+      success: true,
+      completedProcesses,
+      averageTurnaroundTime,
+      averageWaitingTime,
+    });
+  } catch (error) {
+    res.send({
+      success: false,
+      message: error.message,
+    });
+  }
+};

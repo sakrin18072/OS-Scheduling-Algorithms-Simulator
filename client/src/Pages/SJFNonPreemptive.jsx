@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import Layout from "../Components/Layout";
-import { FiExternalLink } from "react-icons/fi";
+import axios from "axios";
 
 const SJFNonPreemptive = () => {
   const [processes, setProcesses] = useState([]);
-  const [newProcess, setNewProcess] = useState({ id: "", burstTime: "" });
+  const [result, setResult] = useState([]);
   const [starvationDetected, setStarvationDetected] = useState(false);
-  const [waitingTimes, setWaitingTimes] = useState([]);
+  const [newProcess, setNewProcess] = useState({
+    id: "",
+    burstTime: "",
+    priority: "",
+    arrivalTime: "",
+  });
   const [averageWaitingTime, setAverageWaitingTime] = useState(0);
   const [averageTurnaroundTime, setAverageTurnaroundTime] = useState(0);
 
@@ -14,48 +19,39 @@ const SJFNonPreemptive = () => {
     setNewProcess({ ...newProcess, [e.target.name]: e.target.value });
   };
 
-  const addProcess = (e) => {
+  const addProcess = async (e) => {
     e.preventDefault();
 
-    const { id, burstTime } = newProcess;
+    const { id, burstTime, priority, arrivalTime } = newProcess;
 
     const process = {
       id,
       burstTime: parseInt(burstTime),
+      priority: parseInt(priority),
+      arrivalTime: parseInt(arrivalTime),
+      initialBurstTime: parseInt(burstTime),
     };
-
     const newProcesses = [...processes, process];
-    newProcesses.sort((a, b) => {
-      return a.burstTime - b.burstTime;
-    });
     setProcesses(newProcesses);
-    setNewProcess({ id: "", burstTime: "" });
-
-    if (newProcesses.length <= 1) return;
-
-    let waitingTime = 0;
-    let waitingTimesArray = [0];
-
-    for (let i = 1; i < newProcesses.length; i++) {
-      waitingTime += newProcesses[i - 1].burstTime;
-      waitingTimesArray.push(waitingTime);
-      setWaitingTimes(waitingTimesArray);
-
-      const sumWaitingTimes = waitingTimesArray.reduce((a, b) => a + b, 0);
-      setAverageWaitingTime(sumWaitingTimes / waitingTimesArray.length);
-
-      const sumTurnaroundTimes = newProcesses.reduce(
-        (a, process) => a + process.burstTime,
-        0
-      );
-      setAverageTurnaroundTime(sumTurnaroundTimes / newProcesses.length);
-      if (waitingTime >= 500) {
-        setStarvationDetected(true);
-        return;
+    try {
+      const { data } = await axios.post("/sjf/non-preemptive", {
+        processesFromReq: newProcesses,
+      });
+      if (data?.success) {
+        setResult(data.completedProcesses);
+        setAverageTurnaroundTime(data.averageTurnaroundTime);
+        setAverageWaitingTime(data.averageWaitingTime);
+        for (let i of result) {
+          if (i.waitingTime >= 500) {
+            setStarvationDetected(true);
+            break;
+          }
+        }
       }
+    } catch (error) {
+      console.log(error.message);
     }
-
-    setStarvationDetected(false);
+    setNewProcess({ id: "", burstTime: "", priority: "", arrivalTime: "" });
   };
 
   return (
@@ -111,9 +107,8 @@ const SJFNonPreemptive = () => {
         <p className="text-2xl text-center mt-8 font-extrabold mb-3 text-neutral-300">
           Shortest Job First (SJF) Non-preemptive Algorithm Simulation
         </p>
-
         <div className="container">
-          <form onSubmit={addProcess} className="mb-8 mt-8">
+          <form onSubmit={addProcess} className="mb-8">
             <div className="mb-4">
               <label htmlFor="id" className="block text-neutral-300">
                 Process ID
@@ -142,6 +137,20 @@ const SJFNonPreemptive = () => {
               />
             </div>
 
+            <div className="mb-4">
+              <label htmlFor="arrivalTime" className="block text-neutral-300">
+                Arrival Time
+              </label>
+              <input
+                type="number"
+                id="arrivalTime"
+                name="arrivalTime"
+                value={newProcess.arrivalTime}
+                onChange={handleInputChange}
+                className="border border-gray-300 bg-transparent text-neutral-300 rounded px-3 py-2 w-full"
+              />
+            </div>
+
             <button
               type="submit"
               className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-900"
@@ -149,19 +158,18 @@ const SJFNonPreemptive = () => {
               Add Process
             </button>
           </form>
-
           {starvationDetected && (
             <>
               <p className="text-red-500 font-semibold">Starvation detected!</p>
               <img
-                src="https://media.tenor.com/y_fxz14VsCwAAAAC/adhurs-brahmanandam.gif"
+                src="https://media.tenor.com/TCMtwXLJukAAAAAC/brahmi-krishna.gif"
                 className=" rounded-2xl mb-8"
                 alt=""
               />
             </>
           )}
 
-          {processes.length > 0 && (
+          {result.length > 0 && (
             <div className="mb-8 text-neutral-300">
               <h2 className="text-lg font-semibold mb-2">Processes:</h2>
               <table className="table-auto w-full border-0 bg-gray-600">
@@ -169,29 +177,29 @@ const SJFNonPreemptive = () => {
                   <tr>
                     <th className="px-4 py-2">Process ID</th>
                     <th className="px-4 py-2">Burst Time</th>
+                    <th className="px-4 py-2">Arrival Time</th>
                     <th className="px-4 py-2">Waiting Time</th>
+                    <th className="px-4 py-2">Completion Time</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {processes.map((process, index) => (
-                    <tr key={index} className="odd:bg-gray-800  text-center">
+                  {result.map((process, index) => (
+                    <tr key={index} className="odd:bg-gray-800 text-center">
                       <td className=" px-4 py-2">{process.id}</td>
-                      <td className=" px-4 py-2">{process.burstTime}</td>
-                      <td className=" px-4 py-2">
-                        {waitingTimes[index] !== undefined
-                          ? waitingTimes[index]
-                          : "-"}
-                      </td>
+                      <td className=" px-4 py-2">{process.initialBurstTime}</td>
+                      <td className=" px-4 py-2">{process.arrivalTime}</td>
+                      <td className=" px-4 py-2">{process.waitingTime}</td>
+                      <td className=" px-4 py-2">{process.completionTime}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
               <div className="mt-4">
                 <p className="font-semibold">
-                  Average Waiting Time: {averageWaitingTime.toFixed(2)}
+                  Average Waiting Time: {averageWaitingTime}
                 </p>
                 <p className="font-semibold">
-                  Average Turnaround Time: {averageTurnaroundTime.toFixed(2)}
+                  Average Turnaround Time: {averageTurnaroundTime}
                 </p>
               </div>
             </div>

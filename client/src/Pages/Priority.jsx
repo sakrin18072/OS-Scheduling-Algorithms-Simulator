@@ -17,7 +17,7 @@ const Priority = () => {
               alt=""
             />
             <h2 className="text-xl font-semibold mb-2 mt-3">
-              Priority Scheduling <span className="text-xs text-neutral-400">(Pre-emptive)</span>
+              Priority Scheduling <br /> <span className="text-xs text-neutral-400">(Pre-emptive)</span>
             </h2>
             <p className="text-gray-700">
               Simulate the Priority Scheduling CPU scheduling algorithm.
@@ -33,7 +33,7 @@ const Priority = () => {
               alt=""
             />
             <h2 className="text-xl font-semibold mb-2 mt-3">
-              Priority Scheduling <span className="text-xs text-neutral-400">(Non Pre-emptive)</span>
+              Priority Scheduling <br /> <span className="text-xs text-neutral-400">(Non Pre-emptive)</span>
             </h2>
             <p className="text-gray-700">
               Simulate the Priority Scheduling CPU scheduling algorithm.

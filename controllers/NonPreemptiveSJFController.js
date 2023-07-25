@@ -22,22 +22,26 @@ class NonPreemptiveSJFScheduling {
   execute() {
     const processesCopy = JSON.parse(JSON.stringify(this.processes));
 
-    // Sort processes by arrival time and burst time (if same arrival time)
-    processesCopy.sort((a, b) => {
-      if (a.arrivalTime === b.arrivalTime) {
-        return a.burstTime - b.burstTime;
-      } else {
-        return a.arrivalTime - b.arrivalTime;
-      }
-    });
+    processesCopy.sort((a, b) => a.arrivalTime - b.arrivalTime);
 
-    let currentTime = processesCopy[0].arrivalTime;
+    let currentTime = 0;
 
     while (processesCopy.length > 0) {
-      const currentProcess = processesCopy[0];
+      const eligibleProcesses = processesCopy.filter(
+        (process) => process.arrivalTime <= currentTime
+      );
+
+      if (eligibleProcesses.length === 0) {
+        currentTime++;
+        continue;
+      }
+
+      eligibleProcesses.sort((a, b) => a.burstTime - b.burstTime);
+
+      const currentProcess = eligibleProcesses[0];
 
       currentProcess.startTime = currentTime;
-      currentProcess.completionTime = currentTime + currentProcess.burstTime;
+      currentProcess.completionTime = currentTime + currentProcess.initialBurstTime;
       currentProcess.turnaroundTime =
         currentProcess.completionTime - currentProcess.arrivalTime;
       currentProcess.waitingTime =
@@ -45,7 +49,7 @@ class NonPreemptiveSJFScheduling {
 
       this.completedProcesses.push(currentProcess);
 
-      processesCopy.splice(0, 1);
+      processesCopy.splice(processesCopy.indexOf(currentProcess), 1);
 
       currentTime = currentProcess.completionTime;
     }
@@ -69,34 +73,33 @@ class NonPreemptiveSJFScheduling {
 }
 
 export const NonPreemptiveSJFSimulator = (req, res) => {
-    try {
-      const { processesFromReq } = req.body;
-      const processes = [];
-  
-      for (let i of processesFromReq) {
-        processes.push(new Process(i.id, i.arrivalTime, i.burstTime ));
-      }
-      const scheduler = new PreemptiveSJFScheduling(processes);
-      scheduler.execute();
-      const completedProcesses = scheduler.completedProcesses;
-  
-      const averageWaitingTime = scheduler
-        .calculateAverageWaitingTime()
-        .toFixed(2);
-      const averageTurnaroundTime = scheduler
-        .calculateAverageTurnaroundTime()
-        .toFixed(2);
-      res.send({
-        success: true,
-        completedProcesses,
-        averageTurnaroundTime,
-        averageWaitingTime,
-      });
-    } catch (error) {
-      res.send({
-        success: false,
-        message: error.message,
-      });
+  try {
+    const { processesFromReq } = req.body;
+    const processes = [];
+
+    for (let i of processesFromReq) {
+      processes.push(new Process(i.id, i.arrivalTime, i.burstTime));
     }
-  };
-  
+    const scheduler = new NonPreemptiveSJFScheduling(processes);
+    scheduler.execute();
+    const completedProcesses = scheduler.completedProcesses;
+
+    const averageWaitingTime = scheduler
+      .calculateAverageWaitingTime()
+      .toFixed(2);
+    const averageTurnaroundTime = scheduler
+      .calculateAverageTurnaroundTime()
+      .toFixed(2);
+    res.send({
+      success: true,
+      completedProcesses,
+      averageTurnaroundTime,
+      averageWaitingTime,
+    });
+  } catch (error) {
+    res.send({
+      success: false,
+      message: error.message,
+    });
+  }
+};
