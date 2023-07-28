@@ -178,10 +178,10 @@ const PriorityNonPreemptive = () => {
 
           {starvationDetected && (
             <>
-              <p className="text-red-500 font-semibold">Starvation detected!</p>
+              <p className="text-red-500 text-lg font-semibold">Starvation detected!</p>
               <img
                 src="https://media.tenor.com/TCMtwXLJukAAAAAC/brahmi-krishna.gif"
-                className=" rounded-2xl mb-8"
+                className=" rounded-2xl mb-8 w-64"
                 alt=""
               />
             </>

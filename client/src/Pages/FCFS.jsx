@@ -172,12 +172,12 @@ const FCFS = () => {
           </form>
           {convoyEffectDetected && (
             <>
-              <p className="text-red-500 font-semibold">
+              <p className="text-red-500 text-lg font-semibold">
                 Convoy Effect detected!
               </p>
               <img
                 src="https://media.tenor.com/QP3dbDN-YQUAAAAC/brahmi-brahmanandam.gif"
-                className="rounded-2xl mb-8"
+                className="rounded-2xl mb-8 w-64"
                 alt=""
               />
             </>
