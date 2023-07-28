@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../Components/Layout";
-import { Link } from "react-router-dom";
-import { FiExternalLink } from "react-icons/fi";
-
+const mp = new Map();
 const PriorityNonPreemptive = () => {
   const [processes, setProcesses] = useState([]);
   const [newProcess, setNewProcess] = useState({
@@ -24,11 +22,30 @@ const PriorityNonPreemptive = () => {
 
     const { id, burstTime, priority } = newProcess;
 
+    if (
+      newProcess.burstTime === "" ||
+      !newProcess.id ||
+      newProcess.priority === ""
+    ) {
+      window.alert("Please enter valid data");
+      return;
+    }
+
+    
+
     const process = {
       id,
       burstTime: parseInt(burstTime),
       priority: parseInt(priority),
     };
+    if(process.burstTime < 0 || process.priority < 0 || process.id<0){
+      window.alert("Enter valid data");
+      return;
+    }
+    if (mp.has(id) === true) {
+      window.alert("Porcess ID already exists");
+      return;
+    } else mp.set(id, 1);
     const newProcesses = [...processes, process];
     newProcesses.sort((a, b) => {
       return a.priority - b.priority;
@@ -131,7 +148,7 @@ const PriorityNonPreemptive = () => {
                 Process ID
               </label>
               <input
-                type="text"
+                type="number"
                 id="id"
                 name="id"
                 value={newProcess.id}
@@ -178,7 +195,9 @@ const PriorityNonPreemptive = () => {
 
           {starvationDetected && (
             <>
-              <p className="text-red-500 text-lg font-semibold">Starvation detected!</p>
+              <p className="text-red-500 text-lg font-semibold">
+                Starvation detected!
+              </p>
               <img
                 src="https://media.tenor.com/TCMtwXLJukAAAAAC/brahmi-krishna.gif"
                 className=" rounded-2xl mb-8 w-64"

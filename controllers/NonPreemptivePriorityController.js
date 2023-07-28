@@ -20,7 +20,6 @@ class NonPreemptivePriorityScheduling {
   }
 
   execute() {
-    // Sort the processes based on priority and arrival time
     this.processes.sort((a, b) => {
       if (a.priority === b.priority) {
         return a.arrivalTime - b.arrivalTime;
@@ -29,26 +28,22 @@ class NonPreemptivePriorityScheduling {
       }
     });
 
-    let currentTime = 0; // Initialize the current time
+    let currentTime = 0;
 
     for (const currentProcess of this.processes) {
-      // If the process hasn't arrived yet, wait until it arrives
       if (currentTime < currentProcess.arrivalTime) {
         currentTime = currentProcess.arrivalTime;
       }
 
-      // Set the start time and completion time for the current process
       currentProcess.startTime = currentTime;
-      currentProcess.completionTime = currentTime + currentProcess.burstTime; // Use burstTime here
+      currentProcess.completionTime = currentTime + currentProcess.burstTime;
       currentProcess.turnaroundTime =
         currentProcess.completionTime - currentProcess.arrivalTime;
       currentProcess.waitingTime =
         currentProcess.turnaroundTime - currentProcess.initialBurstTime;
 
-      // Move the current time to the completion time of the current process
       currentTime = currentProcess.completionTime;
 
-      // Add the completed process to the list
       this.completedProcesses.push(currentProcess);
     }
   }

@@ -7,17 +7,20 @@ const Header = () => {
       <div class="container mx-auto flex justify-between items-center">
         <Link to={"/"}>
           <div className="flex align-middle justify-center">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/4/47/VNRVJIETLogo.png"
-            className=" w-14 hidden lg:flex"
-            alt=""
-          />
-          <span className=" text-5xl font-extralight text-neutral-200 hidden lg:flex">&nbsp;|&nbsp;</span>
-          <div className="flex flex-col mt-2">
-          <span className=" text-neutral-300">Operating Systems</span>
-          <span className="text-neutral-300 text-xs">Course Based Project</span>
-          </div>
-
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/4/47/VNRVJIETLogo.png"
+              className=" w-14 hidden lg:flex"
+              alt=""
+            />
+            <span className=" text-5xl font-extralight text-neutral-200 hidden lg:flex">
+              &nbsp;|&nbsp;
+            </span>
+            <div className="flex flex-col mt-2">
+              <span className=" text-neutral-300">Operating Systems</span>
+              <span className="text-neutral-300 text-xs">
+                Course Based Project
+              </span>
+            </div>
           </div>
         </Link>
         <h1 class="text-3xl font-bold hidden lg:flex">

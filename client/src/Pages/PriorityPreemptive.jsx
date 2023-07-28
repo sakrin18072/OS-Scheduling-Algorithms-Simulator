@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../Components/Layout";
 import axios from "axios";
-
+const mp = new Map();
 const PriorityPreemptive = () => {
   const [processes, setProcesses] = useState([]);
   const [result, setResult] = useState([]);
@@ -9,7 +9,7 @@ const PriorityPreemptive = () => {
     id: "",
     burstTime: "",
     priority: "",
-    arrivalTime:""
+    arrivalTime: "",
   });
   const [averageWaitingTime, setAverageWaitingTime] = useState(0);
   const [averageTurnaroundTime, setAverageTurnaroundTime] = useState(0);
@@ -23,13 +23,35 @@ const PriorityPreemptive = () => {
 
     const { id, burstTime, priority, arrivalTime } = newProcess;
 
+    if (
+      newProcess.burstTime === "" ||
+      !newProcess.id ||
+      newProcess.priority === "" ||
+      newProcess.arrivalTime === ""
+    ) {
+      window.alert("Please enter valid data");
+      return;
+    }
+
+    
+
     const process = {
       id,
       burstTime: parseInt(burstTime),
       priority: parseInt(priority),
       arrivalTime: parseInt(arrivalTime),
-      initialBurstTime: parseInt(burstTime)
+      initialBurstTime: parseInt(burstTime),
     };
+
+    if(process.burstTime < 0 || process.arrivalTime < 0 || process.priority<0 || priority.id<0){
+      window.alert("Enter valid data");
+      return;
+    }
+    if (mp.has(id) === true) {
+      window.alert("Porcess ID already exists");
+      return;
+    } else mp.set(id, 1);
+
     const newProcesses = [...processes, process];
     setProcesses(newProcesses);
     try {
@@ -117,7 +139,7 @@ const PriorityPreemptive = () => {
                 Process ID
               </label>
               <input
-                type="text"
+                type="number"
                 id="id"
                 name="id"
                 value={newProcess.id}

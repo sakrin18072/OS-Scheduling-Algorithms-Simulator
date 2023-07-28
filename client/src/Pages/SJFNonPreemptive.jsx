@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../Components/Layout";
 import axios from "axios";
-
+const mp = new Map();
 const SJFNonPreemptive = () => {
   const [processes, setProcesses] = useState([]);
   const [result, setResult] = useState([]);
@@ -9,7 +9,6 @@ const SJFNonPreemptive = () => {
   const [newProcess, setNewProcess] = useState({
     id: "",
     burstTime: "",
-    priority: "",
     arrivalTime: "",
   });
   const [averageWaitingTime, setAverageWaitingTime] = useState(0);
@@ -22,15 +21,33 @@ const SJFNonPreemptive = () => {
   const addProcess = async (e) => {
     e.preventDefault();
 
-    const { id, burstTime, priority, arrivalTime } = newProcess;
+    const { id, burstTime, arrivalTime } = newProcess;
+
+    if (
+      newProcess.burstTime === "" ||
+      !newProcess.id ||
+      newProcess.arrivalTime === ""
+    ) {
+      window.alert("Please enter valid data");
+      return;
+    }
+
+    
 
     const process = {
       id,
       burstTime: parseInt(burstTime),
-      priority: parseInt(priority),
       arrivalTime: parseInt(arrivalTime),
       initialBurstTime: parseInt(burstTime),
     };
+    if(process.burstTime < 0 || process.arrivalTime < 0 || process.id<0){
+      window.alert("Enter valid data");
+      return;
+    }
+    if (mp.has(id) === true) {
+      window.alert("Porcess ID already exists");
+      return;
+    } else mp.set(id, 1);
     const newProcesses = [...processes, process];
     setProcesses(newProcesses);
     try {
@@ -38,7 +55,6 @@ const SJFNonPreemptive = () => {
         processesFromReq: newProcesses,
       });
       if (data?.success) {
-
         setResult(data.completedProcesses);
         setAverageTurnaroundTime(data.averageTurnaroundTime);
         setAverageWaitingTime(data.averageWaitingTime);
@@ -53,7 +69,6 @@ const SJFNonPreemptive = () => {
       console.log(error.message);
     }
     setNewProcess({ id: "", burstTime: "", priority: "", arrivalTime: "" });
-    
   };
 
   return (
@@ -116,7 +131,7 @@ const SJFNonPreemptive = () => {
                 Process ID
               </label>
               <input
-                type="text"
+                type="number"
                 id="id"
                 name="id"
                 value={newProcess.id}
@@ -162,7 +177,9 @@ const SJFNonPreemptive = () => {
           </form>
           {starvationDetected && (
             <>
-              <p className="text-red-500 text-lg font-semibold">Starvation detected!</p>
+              <p className="text-red-500 text-lg font-semibold">
+                Starvation detected!
+              </p>
               <img
                 src="https://media.tenor.com/TCMtwXLJukAAAAAC/brahmi-krishna.gif"
                 className=" rounded-2xl mb-8 w-64"

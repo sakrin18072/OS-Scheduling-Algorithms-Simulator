@@ -41,7 +41,8 @@ class NonPreemptiveSJFScheduling {
       const currentProcess = eligibleProcesses[0];
 
       currentProcess.startTime = currentTime;
-      currentProcess.completionTime = currentTime + currentProcess.initialBurstTime;
+      currentProcess.completionTime =
+        currentTime + currentProcess.initialBurstTime;
       currentProcess.turnaroundTime =
         currentProcess.completionTime - currentProcess.arrivalTime;
       currentProcess.waitingTime =

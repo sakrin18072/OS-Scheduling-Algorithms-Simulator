@@ -134,7 +134,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
-      
+
       <div className="min-h-screen bg-gray-800 mx-auto flex flex-col pt-24 max-w-full">
         <div className="lg:pl-12 lg:pr-12 p-8 rounded-2xl lg:flex-row flex flex-col-reverse lg:m-auto align-middle gap-8 bg-gray-600 m-4">
           <div className="text-center">

@@ -52,7 +52,9 @@ class PreemptivePriorityScheduling {
       } else {
         currentProcess.burstTime = remainingBurstTime;
         currentProcess.startTime =
-          currentProcess.startTime === 0 ? this.currentTime : currentProcess.startTime;
+          currentProcess.startTime === 0
+            ? this.currentTime
+            : currentProcess.startTime;
 
         processesCopy[processesCopy.indexOf(currentProcess)] = currentProcess;
 
@@ -77,7 +79,6 @@ class PreemptivePriorityScheduling {
     return totalTurnaroundTime / this.totalProcesses;
   }
 }
-
 
 export const PreemptivePrioritySimulator = (req, res) => {
   try {

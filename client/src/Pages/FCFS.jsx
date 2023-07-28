@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../Components/Layout";
-
+const mp = new Map();
 const FCFS = () => {
   const [processes, setProcesses] = useState([]);
   const [newProcess, setNewProcess] = useState({
@@ -17,18 +17,29 @@ const FCFS = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (newProcess.burstTime === "" || !newProcess.id) {
       window.alert("Please enter valid data");
+      return;
     } else {
-      
-        setProcesses([...processes, newProcess]);
-      
+      if (
+        Number.parseInt(newProcess.burstTime) < 0 ||
+        Number.parseInt(newProcess.id) < 0
+      ) {
+        window.alert("Enter valid data");
+        return;
+      }
+      setProcesses([...processes, newProcess]);
     }
+
+    if (mp.has(newProcess.id) === true) {
+      window.alert("Porcess ID already exists");
+      return;
+    } else mp.set(newProcess.id, 1);
     setNewProcess({
       id: "",
       burstTime: "",
     });
-
   };
 
   const calculateConvoyEffect = () => {
@@ -142,7 +153,7 @@ const FCFS = () => {
                 Process ID
               </label>
               <input
-                type="text"
+                type="number"
                 id="id"
                 name="id"
                 value={newProcess.id}

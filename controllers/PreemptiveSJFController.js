@@ -74,7 +74,7 @@ export const preemptiveSJFSimulator = (req, res) => {
     const processes = [];
 
     for (let i of processesFromReq) {
-      processes.push(new Process(i.id, i.arrivalTime, i.burstTime ));
+      processes.push(new Process(i.id, i.arrivalTime, i.burstTime));
     }
     const scheduler = new PreemptiveSJFScheduling(processes);
     scheduler.execute();

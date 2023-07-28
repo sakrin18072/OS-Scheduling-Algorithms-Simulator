@@ -17,7 +17,8 @@ const SJF = () => {
               alt=""
             />
             <h2 className="text-xl font-semibold mb-2 mt-3">
-              Shortest Job First (SJF) <br /> <span className="text-xs text-neutral-400">(Pre-emptive)</span>
+              Shortest Job First (SJF) <br />{" "}
+              <span className="text-xs text-neutral-400">(Pre-emptive)</span>
             </h2>
             <p className="text-gray-700">
               Simulate the Shortest Job First CPU scheduling algorithm.
@@ -33,7 +34,10 @@ const SJF = () => {
               alt=""
             />
             <h2 className="text-xl font-semibold mb-2 mt-3">
-              Shortest Job First (SJF) <br /> <span className="text-xs text-neutral-400">(Non Pre-emptive)</span>
+              Shortest Job First (SJF) <br />{" "}
+              <span className="text-xs text-neutral-400">
+                (Non Pre-emptive)
+              </span>
             </h2>
             <p className="text-gray-700">
               Simulate the Shortest Job First CPU scheduling algorithm.

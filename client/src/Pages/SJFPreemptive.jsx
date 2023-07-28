@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "../Components/Layout";
 import axios from "axios";
 
+const mp = new Map();
 const SJFPreemptive = () => {
   const [processes, setProcesses] = useState([]);
   const [result, setResult] = useState([]);
@@ -9,7 +10,7 @@ const SJFPreemptive = () => {
     id: "",
     burstTime: "",
     priority: "",
-    arrivalTime:""
+    arrivalTime: "",
   });
   const [averageWaitingTime, setAverageWaitingTime] = useState(0);
   const [averageTurnaroundTime, setAverageTurnaroundTime] = useState(0);
@@ -21,15 +22,32 @@ const SJFPreemptive = () => {
   const addProcess = async (e) => {
     e.preventDefault();
 
-    const { id, burstTime, priority, arrivalTime } = newProcess;
+    const { id, burstTime, arrivalTime } = newProcess;
+
+    if (
+      newProcess.burstTime === "" ||
+      !newProcess.id ||
+      newProcess.arrivalTime === ""
+    ) {
+      window.alert("Please enter valid data");
+      return;
+    }
+
 
     const process = {
       id,
       burstTime: parseInt(burstTime),
-      priority: parseInt(priority),
       arrivalTime: parseInt(arrivalTime),
-      initialBurstTime: parseInt(burstTime)
+      initialBurstTime: parseInt(burstTime),
     };
+    if(process.burstTime < 0 || process.arrivalTime < 0 || process.id<0){
+      window.alert("Enter valid data");
+      return;
+    }
+    if (mp.has(id) === true) {
+      window.alert("Porcess ID already exists");
+      return;
+    } else mp.set(id, 1);
     const newProcesses = [...processes, process];
     setProcesses(newProcesses);
     try {
@@ -50,63 +68,63 @@ const SJFPreemptive = () => {
   return (
     <Layout>
       <div className="container mx-auto mt-8">
-      <div className="bg-gray-600 text-neutral-300 p-8 rounded-lg shadow-lg max-w-full">
-  <h2 className="text-2xl font-bold mb-4">
-    Preemptive Shortest Job First (SJF) Scheduling Algorithm
-  </h2>
-  <p className="mb-4">
-    The Preemptive Shortest Job First (SJF) Scheduling algorithm is a scheduling
-    algorithm used by operating systems to prioritize the execution of processes
-    based on their burst time. Each process is assigned a burst time, and the
-    process with the shortest burst time is given CPU time for execution. This
-    algorithm can preempt the running process if a shorter job arrives.
-  </p>
-  <h3 className="text-lg font-bold mb-2">
-    Advantages of Preemptive SJF Scheduling Algorithm:
-  </h3>
-  <ul className="list-disc pl-6 mb-4">
-    <li>
-      Ensures quicker execution of short-duration processes, leading to reduced
-      average waiting time.
-    </li>
-    <li>
-      Allows for the dynamic allocation of CPU time to shorter jobs, even if
-      longer jobs are currently running.
-    </li>
-    <li>
-      Facilitates the scheduling of real-time tasks and time-critical processes
-      with short execution times.
-    </li>
-    <li>
-      Provides fairness by prioritizing shorter jobs over longer ones.
-    </li>
-  </ul>
-  <h3 className="text-lg font-bold mb-2">
-    Disadvantages of Preemptive SJF Scheduling Algorithm:
-  </h3>
-  <ul className="list-disc pl-6 mb-4">
-    <li>
-      May lead to higher overhead due to frequent context switching when
-      shorter jobs continuously arrive.
-    </li>
-    <li>
-      Can result in starvation of longer jobs if a continuous stream of short
-      jobs keep arriving.
-    </li>
-    <li>
-      Requires an efficient burst time estimation mechanism to accurately predict
-      the duration of each process.
-    </li>
-    <li>
-      The process with the shortest burst time can monopolize the CPU, leading
-      to lower system throughput for longer processes.
-    </li>
-  </ul>
-</div>
-
+        <div className="bg-gray-600 text-neutral-300 p-8 rounded-lg shadow-lg max-w-full">
+          <h2 className="text-2xl font-bold mb-4">
+            Preemptive Shortest Job First (SJF) Scheduling Algorithm
+          </h2>
+          <p className="mb-4">
+            The Preemptive Shortest Job First (SJF) Scheduling algorithm is a
+            scheduling algorithm used by operating systems to prioritize the
+            execution of processes based on their burst time. Each process is
+            assigned a burst time, and the process with the shortest burst time
+            is given CPU time for execution. This algorithm can preempt the
+            running process if a shorter job arrives.
+          </p>
+          <h3 className="text-lg font-bold mb-2">
+            Advantages of Preemptive SJF Scheduling Algorithm:
+          </h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li>
+              Ensures quicker execution of short-duration processes, leading to
+              reduced average waiting time.
+            </li>
+            <li>
+              Allows for the dynamic allocation of CPU time to shorter jobs,
+              even if longer jobs are currently running.
+            </li>
+            <li>
+              Facilitates the scheduling of real-time tasks and time-critical
+              processes with short execution times.
+            </li>
+            <li>
+              Provides fairness by prioritizing shorter jobs over longer ones.
+            </li>
+          </ul>
+          <h3 className="text-lg font-bold mb-2">
+            Disadvantages of Preemptive SJF Scheduling Algorithm:
+          </h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li>
+              May lead to higher overhead due to frequent context switching when
+              shorter jobs continuously arrive.
+            </li>
+            <li>
+              Can result in starvation of longer jobs if a continuous stream of
+              short jobs keep arriving.
+            </li>
+            <li>
+              Requires an efficient burst time estimation mechanism to
+              accurately predict the duration of each process.
+            </li>
+            <li>
+              The process with the shortest burst time can monopolize the CPU,
+              leading to lower system throughput for longer processes.
+            </li>
+          </ul>
+        </div>
 
         <p className="text-2xl text-center mt-8 font-extrabold mb-3 text-neutral-300">
-        Shortest Job First (SJF) Preemptive Algorithm Simulation
+          Shortest Job First (SJF) Preemptive Algorithm Simulation
         </p>
         <div className="container">
           <form onSubmit={addProcess} className="mb-8">
@@ -115,7 +133,7 @@ const SJFPreemptive = () => {
                 Process ID
               </label>
               <input
-                type="text"
+                type="number"
                 id="id"
                 name="id"
                 value={newProcess.id}
@@ -151,7 +169,6 @@ const SJFPreemptive = () => {
                 className="border border-gray-300 bg-transparent text-neutral-300 rounded px-3 py-2 w-full"
               />
             </div>
-
 
             <button
               type="submit"
