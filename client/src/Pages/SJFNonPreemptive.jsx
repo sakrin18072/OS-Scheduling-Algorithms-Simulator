@@ -43,7 +43,6 @@ const SJFNonPreemptive = () => {
         setAverageTurnaroundTime(data.averageTurnaroundTime);
         setAverageWaitingTime(data.averageWaitingTime);
         for (let i of data.completedProcesses) {
-          console.log(i);
           if (i.waitingTime >= 500) {
             setStarvationDetected(true);
             break;
